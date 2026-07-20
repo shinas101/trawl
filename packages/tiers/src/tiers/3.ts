@@ -115,6 +115,7 @@ export async function runTier3(
       const solveResult = await solvePageCaptchas(page, solveRemaining).catch(() => ({ attempted: [], solved: [] }))
       captchasSolved = solveResult.solved
     }
+    await page.waitForLoadState("networkidle");
 
     const html = await page.content()
 
